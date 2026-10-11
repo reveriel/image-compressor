@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://www.reveriel.com/image-compressor/sitemap.xml
