@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>画像圧縮ツール｜アップロード不要・ブラウザ内で完結（PNG/JPEG/WebP）</title>
+<meta name="description" content="画像をサーバーに送信せず、ブラウザ内だけで圧縮できる無料ツール。PNG・JPEG・WebPに対応し、複数ファイルをまとめて処理。品質スライダーで画質と容量のバランスを調整でき、圧縮率もその場で確認できます。">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="./">
+<meta property="og:type" content="website">
+<meta property="og:title" content="画像圧縮ツール｜アップロード不要・ブラウザ内で完結">
+<meta property="og:description" content="画像はアップロードされません。すべての圧縮処理はあなたの端末のブラウザ内で完結します。PNG・JPEG・WebP対応。">
+<meta name="theme-color" content="#4f46e5">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%234f46e5'/%3E%3Cpath d='M11 10h5.2a3.4 3.4 0 0 1 0 6.8H11z' fill='none' stroke='white' stroke-width='2.2' stroke-linejoin='round'/%3E%3Cpath d='M11 16.8V22' fill='none' stroke='white' stroke-width='2.2' stroke-linecap='round'/%3E%3Cpath d='M17.5 22l3.6-5.2M21.1 22l-3.6-5.2' fill='none' stroke='white' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "画像圧縮ツール",
+      "applicationCategory": "MultimediaApplication",
+      "operatingSystem": "Any (Web Browser)",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY" },
+      "featureList": ["ブラウザ内で完結（アップロード不要）", "PNG/JPEG/WebP対応", "複数ファイル一括処理", "品質スライダー", "圧縮率の表示"]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "画像はサーバーに送信されますか？",
+          "acceptedAnswer": { "@type": "Answer", "text": "いいえ。読み込み・圧縮・保存のすべてがお使いのブラウザ内（端末内）で実行されます。画像が外部に送信されることはありません。" }
+        },
+        {
+          "@type": "Question",
+          "name": "対応している画像形式は？",
+          "acceptedAnswer": { "@type": "Answer", "text": "PNG・JPEG・WebPの読み込みに対応しています。出力は元の形式のまま、またはWebP・JPEGに変換して保存できます。" }
+        },
+        {
+          "@type": "Question",
+          "name": "圧縮すると画質は悪くなりますか？",
+          "acceptedAnswer": { "@type": "Answer", "text": "JPEG・WebPは非可逆圧縮のため、品質を下げるほど画質は落ちます。品質80%前後であれば、ほとんどの用途で見た目の違いはほとんど分かりません。PNGは可逆圧縮のため品質設定は影響しません。" }
+        },
+        {
+          "@type": "Question",
+          "name": "何枚まで一度に処理できますか？",
+          "acceptedAnswer": { "@type": "Answer", "text": "決まった上限はありませんが、扱う枚数と解像度がそのまま端末のメモリ消費になります。数十枚を超える場合は数回に分けることをおすすめします。" }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="./">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+        <rect width="32" height="32" rx="7" fill="currentColor"/>
+        <path d="M11 10h5.2a3.4 3.4 0 0 1 0 6.8H11z" fill="none" stroke="#fff" stroke-width="2.2" stroke-linejoin="round"/>
+        <path d="M11 16.8V22" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/>
+        <path d="M17.5 22l3.6-5.2M21.1 22l-3.6-5.2" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/>
+      </svg>
+      <span>画像圧縮ツール</span>
+    </a>
+    <nav class="site-nav" aria-label="ページ内リンク">
+      <a href="#tool">ツール</a>
+      <a href="#about">使い方</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow">アップロード不要・完全ブラウザ内処理</p>
+      <h1>画像をアップロードせず、<br class="br-mobile">ブラウザ内で圧縮。</h1>
+      <p class="lede">
+        PNG・JPEG・WebPに対応。複数ファイルをまとめて圧縮し、品質スライダーで画質と容量のバランスを調整できます。
+        画像がサーバーへ送信されることは一切ありません。
+      </p>
+      <ul class="hero-points">
+        <li>端末内で完結 — 画像は外部送信されません</li>
+        <li>一括処理 — ドラッグ＆ドロップで複数枚まとめて</li>
+        <li>無料・登録不要 — インストールも会員登録も不要</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ TOOL ============ -->
+  <section id="tool" class="tool">
+    <div class="wrap">
+
+      <!-- ▼▼ 広告枠（未接続 / コメントアウト） ▼▼
+      <div id="ad-slot" class="ad-slot" aria-hidden="true">
+        <span>Advertisement</span>
+      </div>
+      ▲▲ 広告枠ここまで ▲▲ -->
+
+      <div id="dropzone" class="dropzone" tabindex="0" role="button" aria-label="画像を選択またはドロップしてアップロード">
+        <svg class="dz-icon" viewBox="0 0 48 48" aria-hidden="true" focusable="false">
+          <path d="M24 32V13m0 0l-7 7m7-7l7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M9 30v4a5 5 0 0 0 5 5h20a5 5 0 0 0 5-5v-4" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+        </svg>
+        <p class="dz-title">ここに画像をドラッグ＆ドロップ</p>
+        <p class="dz-sub">または <span class="dz-link">ファイルを選択</span>（PNG / JPEG / WebP・複数可）</p>
+        <input id="fileInput" type="file" accept="image/png,image/jpeg,image/webp,image/*" multiple hidden>
+      </div>
+
+      <p class="privacy-note">
+        <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false" class="lock">
+          <path d="M5.5 9V6.8a4.5 4.5 0 0 1 9 0V9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          <rect x="4" y="9" width="12" height="8" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/>
+        </svg>
+        画像はアップロードされません。処理はすべてこの端末のブラウザ内で実行されます。
+      </p>
+
+      <!-- 一括設定 -->
+      <div id="controls" class="controls" hidden>
+        <div class="control">
+          <label for="qualityGlobal">品質（既定）</label>
+          <div class="range-row">
+            <input id="qualityGlobal" type="range" min="10" max="100" step="1" value="80">
+            <output id="qualityGlobalOut" for="qualityGlobal">80%</output>
+          </div>
+        </div>
+        <div class="control">
+          <label for="formatGlobal">出力形式</label>
+          <select id="formatGlobal">
+            <option value="auto">元の形式を維持</option>
+            <option value="image/webp" selected>WebP（高圧縮）</option>
+            <option value="image/jpeg">JPEG</option>
+            <option value="image/png">PNG（可逆）</option>
+          </select>
+        </div>
+        <div class="control">
+          <label for="maxDim">最大辺（px）</label>
+          <input id="maxDim" type="number" min="0" step="100" placeholder="0 = 変更しない" value="0">
+        </div>
+        <div class="control control-actions">
+          <button id="downloadAll" type="button" class="btn btn-secondary">すべてダウンロード</button>
+          <button id="clearAll" type="button" class="btn btn-ghost">すべて削除</button>
+        </div>
+      </div>
+
+      <div id="summary" class="summary" hidden>
+        <div class="summary-item"><span class="s-label">ファイル数</span><strong id="sumCount">0</strong></div>
+        <div class="summary-item"><span class="s-label">圧縮前</span><strong id="sumBefore">0 KB</strong></div>
+        <div class="summary-item"><span class="s-label">圧縮後</span><strong id="sumAfter">0 KB</strong></div>
+        <div class="summary-item"><span class="s-label">削減</span><strong id="sumSaved" class="ok">0%</strong></div>
+      </div>
+
+      <div id="list" class="list" aria-live="polite"></div>
+
+      <p id="emptyHint" class="empty-hint">まだファイルがありません。上のエリアに画像をドロップしてください。</p>
+    </div>
+  </section>
+
+  <!-- ============ SEO CONTENT ============ -->
+  <section id="about" class="content">
+    <div class="wrap narrow">
+      <h2>画像圧縮ツールの使い方</h2>
+      <ol class="steps">
+        <li><strong>画像を追加</strong> — 点線のエリアにドラッグ＆ドロップ、またはクリックしてファイルを選択します。複数枚をまとめて追加できます。</li>
+        <li><strong>品質を調整</strong> — スライダーで品質を決めます。既定の80%は「見た目の違いがほとんど分からない」水準で、容量を大きく削減できる目安です。</li>
+        <li><strong>ダウンロード</strong> — 各カードの「ダウンロード」を押すと、圧縮後の画像が保存されます。「すべてダウンロード」でまとめて保存することもできます。</li>
+      </ol>
+
+      <h2>なぜ画像圧縮が必要なのか</h2>
+      <p>
+        画像はWebページの容量の大部分を占める要素です。写真をそのまま掲載すると、ページの表示が遅くなり、
+        閲覧者の離脱や検索エンジンでの評価低下につながることがあります。目安として、写真は1枚あたり100〜300KB程度に
+        収めておくと、表示速度と画質のバランスが取りやすくなります。
+      </p>
+      <p>
+        また、メール添付やフォームのアップロードには容量制限が設けられていることが多く、
+        「ファイルサイズが大きすぎます」と弾かれてしまう原因のほとんどは画像の解像度と品質です。
+        本ツールで事前に圧縮しておけば、そうしたトラブルを避けられます。
+      </p>
+
+      <h2>形式ごとの特徴</h2>
+      <div class="table-scroll">
+        <table class="format-table">
+          <thead>
+            <tr><th>形式</th><th>圧縮方式</th><th>透過</th><th>向いている用途</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>JPEG</strong></td><td>非可逆</td><td>不可</td><td>写真・スクリーンショット以外の自然画像。もっとも互換性が高い。</td></tr>
+            <tr><td><strong>PNG</strong></td><td>可逆</td><td>可</td><td>ロゴ・アイコン・図表など、輪郭や文字を劣化させたくない画像。</td></tr>
+            <tr><td><strong>WebP</strong></td><td>可逆／非可逆</td><td>可</td><td>Web掲載全般。JPEGより小さく、透過も扱えるため第一候補になる。</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>プライバシーについて</h2>
+      <p>
+        多くのオンライン圧縮サービスは、画像を一度サーバーへ送信して処理します。本ツールはそれを行いません。
+        ファイルの読み込み・縮小・再エンコード・保存はすべて、お使いのブラウザに搭載された
+        Canvas API を用いて端末内で実行されます。社外秘の資料や個人情報を含む画像でも、
+        外部に送信される心配なく処理できます。オフライン状態でも動作します。
+      </p>
+
+      <h2 id="faq">よくある質問</h2>
+      <dl class="faq">
+        <dt>画像はサーバーに送信されますか？</dt>
+        <dd>いいえ。読み込みから保存まで、すべてブラウザ内で完結します。ネットワークへ画像が送られることはありません。</dd>
+        <dt>圧縮すると画質は悪くなりますか？</dt>
+        <dd>JPEG・WebPは非可逆圧縮のため、品質を下げるほど劣化しますが、80%前後なら多くの場合で違いは判別しにくいレベルです。PNGは可逆圧縮なので、品質設定を変えても画質は変わりません（容量削減効果も限定的です）。透過PNGを大きく軽くしたい場合は、出力をWebPにすると効果的です。</dd>
+        <dt>何枚まで一度に処理できますか？</dt>
+        <dd>回数制限はありませんが、枚数と解像度の分だけメモリを消費します。非常に大きな画像を数十枚同時に処理すると動作が重くなるため、その場合は数回に分けてください。</dd>
+        <dt>元のファイルは変更されますか？</dt>
+        <dd>いいえ。元のファイルには一切手を加えません。圧縮後の画像は別ファイルとしてダウンロードされます。</dd>
+      </dl>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <p class="footer-brand">画像圧縮ツール</p>
+    <p class="footer-note">すべての処理はブラウザ内で完結します。画像は送信・保存されません。</p>
+    <p class="footer-copy">&copy; <span id="year">2026</span> — 無料・登録不要のオンライン画像圧縮ツール</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
