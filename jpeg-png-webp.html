@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>画像を軽くする方法｜JPEG・PNG・WebPの違いと使い分けガイド</title>
+<meta name="description" content="画像を軽くする方法を、形式の選び方から解説。JPEG・PNG・WebPの違い（圧縮方式・透過・容量・対応範囲）と用途別の使い分け、透過PNGを軽くするコツ、目標サイズの目安までまとめました。ブラウザ内で完結する無料ツールで、アップロード不要で圧縮できます。">
+<meta name="keywords" content="画像 軽くする,画像 圧縮 方法,JPEG PNG 違い,WebP 変換,画像 容量 小さく,透過PNG 軽くする">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.reveriel.com/image-compressor/jpeg-png-webp.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="画像を軽くする方法｜JPEG・PNG・WebPの違いと使い分けガイド">
+<meta property="og:description" content="JPEG・PNG・WebPの違いと用途別の使い分け、透過PNGを軽くするコツ、目標サイズの目安を解説します。">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:url" content="https://www.reveriel.com/image-compressor/jpeg-png-webp.html">
+<meta property="og:image" content="https://www.reveriel.com/image-compressor/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://www.reveriel.com/image-compressor/og-image.png">
+<meta name="theme-color" content="#4f46e5">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%234f46e5'/%3E%3Cpath d='M11 10h5.2a3.4 3.4 0 0 1 0 6.8H11z' fill='none' stroke='white' stroke-width='2.2' stroke-linejoin='round'/%3E%3Cpath d='M11 16.8V22' fill='none' stroke='white' stroke-width='2.2' stroke-linecap='round'/%3E%3Cpath d='M17.5 22l3.6-5.2M21.1 22l-3.6-5.2' fill='none' stroke='white' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="guide.css">
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "6fc01bf3ac5e457ba1bd16b91e5b653e"}'></script><!-- End Cloudflare Web Analytics -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "画像を軽くする方法｜JPEG・PNG・WebPの違いと使い分けガイド",
+      "description": "JPEG・PNG・WebPの違いと用途別の使い分け、透過PNGを軽くするコツ、目標サイズの目安を解説します。",
+      "inLanguage": "ja",
+      "datePublished": "2026-10-12",
+      "dateModified": "2026-10-12",
+      "author": { "@type": "Organization", "name": "Reveriel" },
+      "publisher": { "@type": "Organization", "name": "Reveriel" },
+      "mainEntityOfPage": { "@type": "WebPage", "@id": "https://www.reveriel.com/image-compressor/jpeg-png-webp.html" },
+      "image": "https://www.reveriel.com/image-compressor/og-image.png"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "画像を軽くする一番簡単な方法は？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "解像度（ピクセル数）を必要な大きさに縮小し、形式を用途に合わせて選び直すのが最も効果的です。写真ならJPEGまたはWebP、ロゴや図表ならPNGまたはWebP（可逆）が基本です。品質を80%前後に設定すると、見た目の違いがほとんど分からないまま容量を大きく削減できます。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "JPEGとPNGはどう違いますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "JPEGは非可逆圧縮で、写真のように色数が多い画像を小さくするのが得意ですが、透過（透明）は扱えません。PNGは可逆圧縮で、画質を落とさずに保存でき透過も扱えますが、写真には向かず容量が大きくなりがちです。写真はJPEG、ロゴ・アイコン・図表はPNGという使い分けが基本です。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "WebPに変換するメリットは何ですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "WebPは同じ画質ならJPEGやPNGより容量を小さくできる形式で、透過にも対応しています。主要なブラウザのほぼすべてが対応しているため、Web掲載用の画像では第一候補になります。写真は非可逆で、ロゴなどは可逆で保存でき、透過PNGの代わりにも使えます。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "PNGはどうしても容量が大きくなりますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "PNGは可逆圧縮のため、写真のように色数が多い画像では容量が大きくなります。また、既に最適化されたPNGを再保存すると、かえって元より大きくなることがあります。その場合は出力形式をWebP（またはJPEG）に変えると、見た目を保ったまま大幅に軽くできます。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "画像はアップロードされますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "いいえ。当サイトの画像圧縮ツールでは、画像はサーバーに送信されません。読み込み・縮小・変換・保存のすべてがお使いのブラウザ内（端末内）で実行されるため、社外秘の資料や個人情報を含む画像でも安心して処理できます。"
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="site-header no-print">
+  <div class="wrap header-inner">
+    <a class="brand" href="./">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+        <rect width="32" height="32" rx="7" fill="currentColor"/>
+        <path d="M11 10h5.2a3.4 3.4 0 0 1 0 6.8H11z" fill="none" stroke="#fff" stroke-width="2.2" stroke-linejoin="round"/>
+        <path d="M11 16.8V22" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/>
+        <path d="M17.5 22l3.6-5.2M21.1 22l-3.6-5.2" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/>
+      </svg>
+      <span>画像圧縮ツール</span>
+    </a>
+    <a class="btn btn-secondary" href="./">画像を圧縮する</a>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="guide-col">
+
+    <nav class="breadcrumb no-print" aria-label="パンくず">
+      <ol>
+        <li><a href="./">画像圧縮ツール</a></li>
+        <li aria-current="page">画像を軽くする方法・JPEG/PNG/WebPの違い</li>
+      </ol>
+    </nav>
+
+    <article class="guide">
+      <h1>画像を軽くする方法・JPEG/PNG/WebPの違いと使い分けガイド</h1>
+      <p class="guide-meta">更新日：2026年10月12日</p>
+      <p class="guide-lead">
+        「画像が重くてアップロードできない」「Webページの表示が遅い」——その原因の多くは、画像の<strong>解像度</strong>と<strong>ファイル形式</strong>にあります。
+        この記事では、画像を軽くする3つの方法と、<strong>JPEG・PNG・WebPの違い</strong>、そして用途別の<strong>使い分け</strong>を、はじめての方にも分かるように整理しました。
+      </p>
+
+      <div class="guide-cta-box">
+        <p><strong>画像はアップロード不要。</strong>ドラッグ＆ドロップするだけで、ブラウザ内で圧縮・形式変換が完結します。登録もインストールも要りません。</p>
+        <a class="btn btn-secondary" href="./">無料で画像を圧縮する</a>
+      </div>
+
+      <h2>画像を軽くする3つの方法</h2>
+      <p>画像の容量を小さくする方法は、大きく次の3つです。効果が大きいのは<strong>1の解像度</strong>で、次に<strong>2の形式</strong>、最後に<strong>3の品質</strong>です。</p>
+      <ol>
+        <li><strong>解像度（ピクセル数）を下げる</strong> — 画像の縦横のピクセル数を、実際に表示する大きさまで縮小します。たとえば4000px幅の写真を1200px幅に縮めるだけで、容量は数分の一になります。効果が最も大きく、見た目への影響もコントロールしやすい方法です。</li>
+        <li><strong>ファイル形式を変える</strong> — 写真をPNGのまま保存していたらJPEGやWebPに、逆にロゴをJPEGで保存していたらPNGやWebPに変えるだけで、見た目を保ったまま軽くなることがあります。形式選びは次の章で詳しく解説します。</li>
+        <li><strong>品質（圧縮率）を調整する</strong> — JPEG・WebPは品質を下げるほど容量が減ります。品質80%前後を目安にすると、多くの場合で見た目の違いがほとんど分からないまま容量を削減できます。</li>
+      </ol>
+      <div class="guide-note">
+        これら3つは組み合わせて使えます。当サイトの<a href="./">画像圧縮ツール</a>では、ドラッグ＆ドロップした画像に対して、最大辺の指定（解像度）、出力形式、品質をまとめて設定できます。
+      </div>
+
+      <h2>JPEG・PNG・WebPの違い</h2>
+      <p>3つの形式の違いを、次の表にまとめました。</p>
+      <div class="table-scroll">
+        <table class="guide-table">
+          <thead>
+            <tr><th>形式</th><th>圧縮方式</th><th>透過</th><th>容量の傾向</th><th>向いている画像</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>JPEG</strong></td>
+              <td>非可逆</td>
+              <td>不可</td>
+              <td>写真では小さい</td>
+              <td>写真・自然画像。もっとも互換性が高い。</td>
+            </tr>
+            <tr>
+              <td><strong>PNG</strong></td>
+              <td>可逆</td>
+              <td>可</td>
+              <td>写真では大きい</td>
+              <td>ロゴ・アイコン・図表。輪郭や文字を劣化させたくない画像。</td>
+            </tr>
+            <tr>
+              <td><strong>WebP</strong></td>
+              <td>可逆／非可逆</td>
+              <td>可</td>
+              <td>JPEGよりさらに小さい</td>
+              <td>Web掲載全般。透過も扱えるため第一候補になる。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        <strong>非可逆（不可逆）圧縮</strong>とは、圧縮時に画質の一部を捨てる代わりに大きく容量を減らす方式です。圧縮を繰り返すと劣化が積み重なります。
+        <strong>可逆（ロスレス）圧縮</strong>は、画質をまったく変えずに容量を減らす方式で、何度保存し直しても画質は劣化しません。ただし写真では削減できる容量に限界があります。
+      </p>
+
+      <h2>用途別の使い分け</h2>
+      <p>迷ったときは、次のように選ぶと失敗がありません。</p>
+      <ul>
+        <li><strong>写真・スクリーンショット以外の自然画像</strong> — JPEG または WebP（非可逆）。Web掲載なら WebP が第一候補です。</li>
+        <li><strong>ロゴ・アイコン・イラスト・図表</strong> — PNG または WebP（可逆）。輪郭がくっきりした画像は、JPEGにすると輪郭の周囲にモヤモヤ（ノイズ）が出やすいため避けます。</li>
+        <li><strong>文字を含むスクリーンショット</strong> — PNG または WebP。文字のエッジを劣化させずに保てます。</li>
+        <li><strong>背景を透明にしたい画像</strong> — PNG または WebP。JPEGは透過を扱えないため、透過部分が白や黒で塗りつぶされてしまいます。</li>
+        <li><strong>とにかく容量を小さくしたいWeb用画像</strong> — WebP。写真でも図表でも、JPEG/PNGより軽くなるのが一般的です。</li>
+      </ul>
+
+      <h2>透過PNGを軽くするには</h2>
+      <p>
+        透過PNG（背景が透明なPNG）は、ロゴや切り抜き画像でよく使われますが、容量が大きくなりがちです。これを軽くする最も効果的な方法は、<strong>透過を保ったままWebPに変換する</strong>ことです。
+        WebPは透過に対応しているため、透明部分を維持したまま容量を大きく削減できます。JPEGに変換してしまうと透過が失われるので注意してください。
+      </p>
+      <p>
+        また、透過PNGをPNGのまま再保存しても、元がすでに最適化されていれば容量はほとんど減らず、環境によっては元より大きくなることがあります。
+        これはPNGが可逆圧縮で、保存のたびに画質を保つ代わりに容量を削りにくい性質を持つためです。その場合も出力形式をWebPに変えるのが有効です。
+      </p>
+
+      <h2>画像を軽くする手順</h2>
+      <p>当サイトの<a href="./">画像圧縮ツール</a>を使えば、次の手順でブラウザ内だけで完結します。画像はサーバーに送信されません。</p>
+      <ol>
+        <li><strong>画像を追加する</strong> — 点線のエリアに画像をドラッグ＆ドロップ、またはクリックして選択します。複数枚をまとめて追加できます。</li>
+        <li><strong>出力形式を選ぶ</strong> — 写真は「WebP」または「JPEG」、ロゴや透過画像は「WebP」を選びます。既定ではWebPが選択されています。</li>
+        <li><strong>最大辺を指定する</strong> — 表示したい大きさに合わせて、長い辺のピクセル数を入力します（例：1200）。変更しない場合は0のままにします。</li>
+        <li><strong>品質を調整してダウンロードする</strong> — 品質スライダーを80%前後に合わせ、圧縮率を確認してから保存します。</li>
+      </ol>
+
+      <h2>目標サイズの目安</h2>
+      <p>用途ごとの容量の目安です。あくまで一例ですが、迷ったときの参考にしてください。</p>
+      <div class="table-scroll">
+        <table class="guide-table">
+          <thead>
+            <tr><th>用途</th><th>推奨する最大辺</th><th>容量の目安</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>ブログ・Webページのアイキャッチ</td><td>1200px 前後</td><td>100〜300KB</td></tr>
+            <tr><td>記事内に挿入する写真</td><td>800〜1000px</td><td>50〜150KB</td></tr>
+            <tr><td>サムネイル・アイコン</td><td>200〜400px</td><td>10〜50KB</td></tr>
+            <tr><td>メール添付・フォーム送信</td><td>長辺1600px 程度</td><td>1MB以下</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        メール添付やWebフォームには容量制限があることが多く、「ファイルサイズが大きすぎます」と弾かれる原因のほとんどは、画像の解像度と品質です。
+        事前に圧縮しておけば、こうしたトラブルを避けられます。
+      </p>
+
+      <section class="guide-faq" aria-labelledby="faqTitle">
+        <h2 id="faqTitle">よくある質問</h2>
+        <dl>
+          <dt>画像を軽くする一番簡単な方法は？</dt>
+          <dd>解像度を必要な大きさに縮小し、形式を用途に合わせて選び直すのが最も効果的です。写真ならJPEGまたはWebP、ロゴや図表ならPNGまたはWebP（可逆）が基本で、品質を80%前後にすると見た目の違いがほとんど分からないまま容量を削減できます。</dd>
+
+          <dt>JPEGとPNGはどう違いますか？</dt>
+          <dd>JPEGは非可逆圧縮で写真を小さくするのが得意ですが透過は扱えません。PNGは可逆圧縮で画質を落とさずに保存でき透過も扱えますが、写真には向かず容量が大きくなりがちです。写真はJPEG、ロゴ・アイコン・図表はPNGが基本です。</dd>
+
+          <dt>WebPに変換するメリットは何ですか？</dt>
+          <dd>WebPは同じ画質ならJPEGやPNGより容量を小さくでき、透過にも対応しています。主要なブラウザのほぼすべてが対応しているため、Web掲載用の画像では第一候補になります。写真は非可逆、ロゴなどは可逆で保存できます。</dd>
+
+          <dt>PNGはどうしても容量が大きくなりますか？</dt>
+          <dd>PNGは可逆圧縮のため、写真のように色数が多い画像では容量が大きくなります。既に最適化されたPNGを再保存すると、かえって元より大きくなることがあります。その場合は出力形式をWebP（またはJPEG）に変えると、見た目を保ったまま大幅に軽くできます。</dd>
+
+          <dt>画像はアップロードされますか？</dt>
+          <dd>いいえ。当サイトの画像圧縮ツールでは、画像はサーバーに送信されません。読み込み・縮小・変換・保存のすべてがブラウザ内（端末内）で実行されるため、社外秘の資料や個人情報を含む画像でも安心して処理できます。</dd>
+        </dl>
+      </section>
+
+      <div class="guide-cta-foot">
+        <h2>画像を今すぐ軽くする</h2>
+        <p>画像をドラッグ＆ドロップするだけ。アップロード不要・登録不要で、ブラウザ内で圧縮と形式変換が完結します。</p>
+        <a class="btn btn-secondary" href="./">無料で画像を圧縮する</a>
+      </div>
+    </article>
+
+    <section class="guide-related no-print" aria-labelledby="relTitle">
+      <h2 id="relTitle">あわせて読みたい・関連ツール</h2>
+      <ul>
+        <li><a href="./">画像圧縮ツール（トップ）<span class="rel-desc">PNG・JPEG・WebPをブラウザ内でまとめて圧縮。アップロード不要。</span></a></li>
+        <li><a href="https://www.reveriel.com/meishi-generator/">名刺メーカー<span class="rel-desc">ブラウザ内で名刺をデザインして印刷・保存できる無料ツール</span></a></li>
+        <li><a href="https://www.reveriel.com/hanko-generator/">判子・印鑑ジェネレーター<span class="rel-desc">印影画像を作成できる無料ツール</span></a></li>
+      </ul>
+    </section>
+
+  </div>
+</main>
+
+<footer class="site-footer no-print">
+  <div class="wrap footer-inner">
+    <p class="footer-brand">画像圧縮ツール</p>
+    <p class="footer-note">すべての処理はブラウザ内で完結します。画像は送信・保存されません。</p>
+    <p class="footer-links"><a href="privacy.html">プライバシーポリシー</a> ・ <a href="company.html">運営者情報</a> ・ <a href="./">画像圧縮ツール トップ</a></p>
+    <p class="footer-feedback"><a href="https://docs.google.com/forms/d/e/1FAIpQLSfHGUfgAlViT3TFiVtJi_EpJ4ioUpd9oGyaJ7rehEV-gBH_PA/viewform?usp=pp_url&amp;entry.1745177199=%E7%94%BB%E5%83%8F%E5%9C%A7%E7%B8%AE%E3%83%84%E3%83%BC%E3%83%AB" target="_blank" rel="noopener">ご意見・フィードバック</a></p>
+    <p class="footer-copy">&copy; <span id="year">2026</span> — 無料・登録不要のオンライン画像圧縮ツール</p>
+  </div>
+</footer>
+
+<script>
+  (function(){ var y=document.getElementById('year'); if(y) y.textContent=String(new Date().getFullYear()); })();
+</script>
+<!-- フィードバックFAB（右下固定・常時表示） -->
+<a href="https://docs.google.com/forms/d/e/1FAIpQLSfHGUfgAlViT3TFiVtJi_EpJ4ioUpd9oGyaJ7rehEV-gBH_PA/viewform?usp=pp_url&amp;entry.1745177199=%E7%94%BB%E5%83%8F%E5%9C%A7%E7%B8%AE%E3%83%84%E3%83%BC%E3%83%AB" target="_blank" rel="noopener" class="feedback-fab" aria-label="ご意見・フィードバックを送る">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+  <span>ご意見・フィードバック</span>
+</a>
+</body>
+</html>

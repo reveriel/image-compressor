@@ -1,0 +1,231 @@
+/* =========================================================
+   書き方ガイド（SEO 記事ページ）共通スタイル
+   style.css の CSS 変数を継承し、ブランドの色味を保つ。
+   ========================================================= */
+
+.guide-col { max-width: 880px; margin-inline: auto; }
+
+/* ---------------- パンくず ---------------- */
+.breadcrumb {
+  padding-block: 16px 0;
+  font-size: 12.5px;
+  color: var(--c-text-faint, #8592a8);
+}
+.breadcrumb ol { list-style: none; display: flex; flex-wrap: wrap; gap: 4px; margin: 0; padding: 0; }
+.breadcrumb li { display: inline-flex; align-items: center; gap: 4px; }
+.breadcrumb a { color: var(--c-accent, #1d4e89); text-decoration: none; }
+.breadcrumb a:hover { text-decoration: underline; }
+.breadcrumb li + li::before { content: "\203A"; color: var(--c-text-faint, #8592a8); }
+
+/* ---------------- 記事本体 ---------------- */
+.guide {
+  background: var(--c-surface, #fff);
+  border: 1px solid var(--c-border, #dde3ec);
+  border-radius: var(--radius, 10px);
+  box-shadow: var(--shadow-sm, 0 1px 2px rgba(0, 0, 0, .06));
+  margin-block: 16px 8px;
+  padding: 34px 38px 40px;
+}
+@media (max-width: 640px) { .guide { padding: 22px 18px 26px; } }
+
+.guide h1 {
+  margin: 0 0 12px;
+  font-size: 26px;
+  line-height: 1.5;
+  letter-spacing: .01em;
+  color: var(--c-text, #131a26);
+}
+.guide .guide-meta { margin: 0 0 16px; font-size: 12px; color: var(--c-text-faint, #8592a8); }
+.guide-lead { margin: 0 0 8px; font-size: 15.5px; line-height: 1.85; color: var(--c-text-muted, #55617a); }
+.guide h2 {
+  margin: 38px 0 14px;
+  padding-left: 12px;
+  font-size: 20px;
+  line-height: 1.5;
+  border-left: 4px solid var(--c-accent, #1d4e89);
+  color: var(--c-text, #131a26);
+}
+.guide h2:first-of-type { margin-top: 30px; }
+.guide h3 { margin: 26px 0 10px; font-size: 16.5px; line-height: 1.5; color: var(--c-text, #131a26); }
+.guide p { margin: 0 0 14px; color: var(--c-text-muted, #55617a); }
+.guide strong { color: var(--c-text, #131a26); font-weight: 700; }
+.guide ul, .guide ol { margin: 0 0 16px; padding-left: 1.5em; color: var(--c-text-muted, #55617a); }
+.guide li { margin-bottom: 7px; }
+.guide a:not(.btn) { color: var(--c-accent, #1d4e89); }
+
+.guide-example {
+  margin: 0 0 16px;
+  padding: 16px 18px;
+  background: var(--c-surface-2, #f6f8fb);
+  border: 1px solid var(--c-border, #dde3ec);
+  border-radius: var(--radius-sm, 6px);
+  font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", YuMincho, serif;
+  font-size: 14px;
+  line-height: 1.95;
+  color: var(--c-text, #131a26);
+  white-space: pre-wrap;
+}
+.guide-note {
+  margin: 0 0 16px;
+  padding: 12px 16px;
+  background: var(--c-warn-soft, #fff7e8);
+  border: 1px solid var(--c-warn-border, #f0cf94);
+  border-radius: var(--radius-sm, 6px);
+  font-size: 13px;
+  line-height: 1.75;
+  color: var(--c-warn, #8a5300);
+}
+.guide-table { width: 100%; margin: 0 0 16px; border-collapse: collapse; font-size: 13.5px; }
+.guide-table th, .guide-table td {
+  padding: 10px 12px;
+  text-align: left;
+  border: 1px solid var(--c-border, #dde3ec);
+  color: var(--c-text-muted, #55617a);
+  vertical-align: top;
+}
+.guide-table th { background: var(--c-surface-2, #f6f8fb); color: var(--c-text, #131a26); font-weight: 700; white-space: nowrap; }
+
+/* ---------------- 上部 CTA ---------------- */
+.guide-cta-box {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin: 4px 0 26px;
+  padding: 18px 20px;
+  background: var(--c-accent-soft, #e5eefb);
+  border: 1px solid var(--c-border, #dde3ec);
+  border-radius: var(--radius, 10px);
+}
+.guide-cta-box p { flex: 1 1 240px; margin: 0; font-size: 13.5px; line-height: 1.7; color: var(--c-text-muted, #55617a); }
+.guide-cta-box strong { color: var(--c-text, #131a26); }
+.guide-cta-box .btn { flex: none; }
+
+/* ---------------- FAQ ---------------- */
+.guide-faq { margin-top: 40px; }
+.guide-faq dl { margin: 0; }
+.guide-faq dt { margin-top: 16px; font-size: 14.5px; font-weight: 700; color: var(--c-text, #131a26); }
+.guide-faq dd { margin: 6px 0 0; color: var(--c-text-muted, #55617a); }
+
+/* ---------------- 下部 CTA ---------------- */
+.guide-cta-foot {
+  margin-top: 36px;
+  padding: 26px 22px;
+  text-align: center;
+  background: var(--c-surface-2, #f6f8fb);
+  border: 1px solid var(--c-border, #dde3ec);
+  border-radius: var(--radius, 10px);
+}
+.guide-cta-foot h2 { margin: 0 0 8px; padding: 0; border: 0; font-size: 18px; }
+.guide-cta-foot p { margin: 0 0 16px; font-size: 13.5px; }
+.guide-cta-foot .btn { font-size: 15px; padding: 12px 26px; }
+
+/* ---------------- 関連ガイド ---------------- */
+.guide-related {
+  background: var(--c-surface, #fff);
+  border: 1px solid var(--c-border, #dde3ec);
+  border-radius: var(--radius, 10px);
+  box-shadow: var(--shadow-sm, 0 1px 2px rgba(0, 0, 0, .06));
+  margin-block: 18px;
+  padding: 22px 24px;
+}
+.guide-related h2 { margin: 0 0 14px; font-size: 16px; color: var(--c-text, #131a26); }
+.guide-related ul { list-style: none; display: grid; gap: 12px; margin: 0; padding: 0; }
+.guide-related a { color: var(--c-accent, #1d4e89); font-weight: 600; text-decoration: none; }
+.guide-related a:hover { text-decoration: underline; }
+.guide-related .rel-desc { display: block; margin-top: 2px; font-size: 12.5px; font-weight: 400; color: var(--c-text-faint, #8592a8); }
+
+/* ---------------- 法務ページ（プライバシーポリシー／運営者情報） ---------------- */
+.legal-page { padding-block: 26px 8px; }
+.legal {
+  max-width: 760px;
+  margin-inline: auto;
+  background: var(--c-surface, #fff);
+  border: 1px solid var(--c-border, #dde3ec);
+  border-radius: var(--radius, 10px);
+  box-shadow: var(--shadow-sm, 0 1px 2px rgba(0, 0, 0, .06));
+  padding: 34px 38px 40px;
+}
+@media (max-width: 640px) { .legal { padding: 22px 18px 26px; } }
+.legal h1 { margin: 0 0 10px; font-size: 24px; line-height: 1.5; color: var(--c-text, #131a26); }
+.legal .legal-meta { margin: 0 0 20px; font-size: 12px; color: var(--c-text-faint, #8592a8); }
+.legal h2 {
+  margin: 30px 0 12px;
+  padding-left: 12px;
+  font-size: 17px;
+  line-height: 1.5;
+  border-left: 4px solid var(--c-accent, #1d4e89);
+  color: var(--c-text, #131a26);
+}
+.legal p { margin: 0 0 13px; color: var(--c-text-muted, #55617a); }
+.legal ul, .legal ol { margin: 0 0 15px; padding-left: 1.5em; color: var(--c-text-muted, #55617a); }
+.legal li { margin-bottom: 6px; }
+.legal a:not(.btn) { color: var(--c-accent, #1d4e89); }
+.legal dl { margin: 0 0 15px; }
+.legal dt { margin-top: 12px; font-weight: 700; color: var(--c-text, #131a26); }
+.legal dd { margin: 4px 0 0; color: var(--c-text-muted, #55617a); }
+.legal-table { width: 100%; margin: 0 0 16px; border-collapse: collapse; font-size: 13.5px; }
+.legal-table th, .legal-table td {
+  padding: 11px 13px;
+  text-align: left;
+  border: 1px solid var(--c-border, #dde3ec);
+  color: var(--c-text-muted, #55617a);
+  vertical-align: top;
+}
+.legal-table th { width: 34%; background: var(--c-surface-2, #f6f8fb); color: var(--c-text, #131a26); font-weight: 700; }
+.legal-back { display: inline-block; margin-bottom: 14px; font-size: 13px; color: var(--c-accent, #1d4e89); text-decoration: none; }
+.legal-back:hover { text-decoration: underline; }
+.legal-note-box {
+  margin: 0 0 16px;
+  padding: 13px 16px;
+  background: var(--c-surface-2, #f6f8fb);
+  border: 1px solid var(--c-border, #dde3ec);
+  border-radius: var(--radius-sm, 6px);
+  font-size: 13px;
+  line-height: 1.75;
+  color: var(--c-text-muted, #55617a);
+}
+
+/* ---------------- 【PR】アフィリエイト枠（電子契約サービス） ---------------- */
+.pr-block {
+  margin: 26px 0;
+  padding: 20px 22px 22px;
+  background: var(--c-surface-2, #f6f8fb);
+  border: 1px solid var(--c-border, #dde3ec);
+  border-radius: var(--radius, 10px);
+}
+.pr-block-title { margin: 0 0 4px; font-size: 16px; color: var(--c-text, #131a26); }
+.pr-block-note { margin: 0 0 16px; font-size: 12px; color: var(--c-text-faint, #8592a8); }
+.pr-card {
+  display: block;
+  margin-bottom: 12px;
+  padding: 16px 18px;
+  background: var(--c-surface, #fff);
+  border: 1px solid var(--c-border, #dde3ec);
+  border-radius: var(--radius-sm, 6px);
+  text-decoration: none;
+  color: inherit;
+}
+.pr-card:last-child { margin-bottom: 0; }
+.pr-card:hover { border-color: var(--c-accent, #1d4e89); }
+.pr-card-name { display: block; font-size: 15px; font-weight: 700; color: var(--c-accent, #1d4e89); }
+.pr-card-desc { display: block; margin-top: 4px; font-size: 13px; line-height: 1.7; color: var(--c-text-muted, #55617a); }
+.pr-badge {
+  display: inline-block;
+  margin-right: 6px;
+  padding: 1px 7px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  color: #fff;
+  background: #8a5300;
+  border-radius: 3px;
+  vertical-align: 1px;
+}
+
+@media print {
+  .site-header, .site-footer, .feedback-fab, .breadcrumb,
+  .guide-cta-box, .guide-cta-foot, .guide-related, .legal-back, .pr-block { display: none !important; }
+  .guide, .legal { border: 0; box-shadow: none; padding: 0; }
+}

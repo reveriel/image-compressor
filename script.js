@@ -459,8 +459,12 @@
       ? entry.outWidth + '×' + entry.outHeight + ' px'
       : '';
     ui.note.className = 'card-note';
-    ui.note.textContent = [dims, extFor(entry.outMime).replace('.', '').toUpperCase(), 'ブラウザ内で処理済み']
-      .filter(Boolean).join(' · ');
+    var noteParts = [dims, extFor(entry.outMime).replace('.', '').toUpperCase(), 'ブラウザ内で処理済み'].filter(Boolean);
+    // 元画像より大きくなった場合は WebP 出力を提案（非可逆再エンコードで膨らむPNGなどが該当）
+    if (pct < 0 && hasWebp && effectiveMime !== 'image/webp') {
+      noteParts.push('元画像より大きくなりました。出力形式をWebPにすると軽くなる場合があります');
+    }
+    ui.note.textContent = noteParts.join(' · ');
 
     ui.dl.disabled = false;
   }

@@ -27,6 +27,21 @@
   --font: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Kaku Gothic ProN",
           "Hiragino Sans", "Noto Sans JP", Meiryo, Roboto, Helvetica, Arial, sans-serif;
   --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* ガイド／法務ページ（guide.css）が参照する変数名へのエイリアス */
+  --c-surface:        var(--surface);
+  --c-surface-2:      var(--surface-alt);
+  --c-border:         var(--border);
+  --c-border-strong:  var(--border-strong);
+  --c-text:           var(--text);
+  --c-text-muted:     var(--text-muted);
+  --c-text-faint:     var(--text-faint);
+  --c-accent:         var(--accent);
+  --c-accent-soft:    var(--accent-soft);
+  --c-accent-hover:   var(--accent-hover);
+  --c-warn:           var(--warn);
+  --c-warn-soft:      #fff7e8;
+  --c-warn-border:    #f0cf94;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -330,6 +345,16 @@ input[type="range"]:focus-visible, .btn:focus-visible, .dropzone:focus-visible {
 .footer-brand { font-weight: 700; margin: 0 0 6px; font-size: 14px; }
 .footer-note { font-size: 12.5px; color: var(--text-muted); margin: 0 0 10px; }
 .footer-copy { font-size: 12px; color: var(--text-faint); margin: 0; }
+.footer-links { font-size: 12.5px; margin: 0 0 8px; color: var(--text-muted); }
+.footer-links a { color: var(--accent); }
+.footer-feedback { font-size: 12.5px; margin: 0 0 10px; }
+.footer-feedback a { color: var(--accent); }
+
+/* ガイド記事内のCTAボタン（.guide a より優先させる） */
+.guide-cta-box .btn,
+.guide-cta-foot .btn { color: #fff; }
+.guide-cta-box .btn:hover,
+.guide-cta-foot .btn:hover { color: #fff; }
 
 /* ---------- レスポンシブ ---------- */
 @media (max-width: 760px) {
@@ -359,7 +384,8 @@ input[type="range"]:focus-visible, .btn:focus-visible, .dropzone:focus-visible {
 }
 
 @media print {
-  .site-header, .tool, .site-footer, .hero-points { display: none; }
+  .site-header, .tool, .site-footer, .hero-points,
+  .feedback-fab, .no-print { display: none !important; }
 }
 
 /* ===== フィードバックFAB（右下固定・常時表示） ===== */
