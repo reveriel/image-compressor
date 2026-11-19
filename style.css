@@ -419,3 +419,8 @@ input[type="range"]:focus-visible, .btn:focus-visible, .dropzone:focus-visible {
   .feedback-fab { right: 14px; bottom: 14px; padding: 11px 16px; font-size: 13px; }
   .feedback-fab svg { width: 16px; height: 16px; }
 }
+
+/* ===== モバイル：入力欄のフォントを16pxに（iOSの自動ズーム防止） ===== */
+@media (max-width: 720px) {
+  input, select, textarea { font-size: 16px !important; }
+}
