@@ -361,6 +361,48 @@
     enqueue(entry);
   }
 
+
+  /* ---------- 目標サイズに収める（二分探索） ---------- */
+  function compressToTarget(file, opts, target) {
+    if (!target || opts.mime === 'image/png') return compress(file, opts);
+    var baseDim = opts.maxDim || 0;
+    var rounds = 0;
+
+    function attempt(q, maxDim) {
+      return compress(file, Object.assign({}, opts, { quality: q, maxDim: maxDim }));
+    }
+
+    // 品質を二分探索し、目標に収まる最大品質を探す
+    function search(maxDim) {
+      var lo = 0.30, hi = 0.95, best = null, smallest = null;
+      function step(n) {
+        if (n >= 6) return Promise.resolve({ best: best, smallest: smallest || attempt(lo, maxDim) });
+        var mid = (lo + hi) / 2;
+        return attempt(mid, maxDim).then(function (res) {
+          if (!smallest || res.blob.size < smallest.blob.size) smallest = res;
+          if (res.blob.size <= target) { best = res; lo = mid; }
+          else { hi = mid; }
+          if (hi - lo < 0.04) return { best: best, smallest: smallest };
+          return step(n + 1);
+        });
+      }
+      return step(0);
+    }
+
+    // 品質だけでは届かない場合は最大辺を段階的に下げて再挑戦
+    function run(maxDim) {
+      return search(maxDim).then(function (r) {
+        if (r.best) return r.best;
+        if (rounds >= 2) return r.smallest;
+        rounds += 1;
+        var next = maxDim > 0 ? Math.round(maxDim * 0.7) : 1600;
+        return run(Math.max(400, next));
+      });
+    }
+
+    return run(baseDim);
+  }
+
   function pump() {
     if (running) return;
     var entry = queue.shift();
@@ -377,7 +419,11 @@
     var mime = resolveMime(entry.mimeChoice, entry.file);
     var maxDim = Math.max(0, parseInt(maxDimInput.value, 10) || 0);
 
-    compress(entry.file, { quality: entry.quality, mime: mime, maxDim: maxDim })
+    var target = Math.max(0, Number($('#targetSize') && $('#targetSize').value) || 0) * 1024;
+    var run = target > 0
+      ? compressToTarget(entry.file, { quality: entry.quality, mime: mime, maxDim: maxDim }, target)
+      : compress(entry.file, { quality: entry.quality, mime: mime, maxDim: maxDim });
+    run
       .then(function (res) {
         if (entries.indexOf(entry) === -1) return;   // 処理中に削除された
         releaseOutput(entry);
@@ -388,6 +434,7 @@
         entry.outUrl = URL.createObjectURL(res.blob);
         entry.status = 'done';
         entry.error = null;
+        entry.targetBytes = target;
         entry.ui.img.src = entry.outUrl;             // プレビューは圧縮後の画像
         renderCard(entry);
       })
@@ -463,6 +510,13 @@
     // 元画像より大きくなった場合は WebP 出力を提案（非可逆再エンコードで膨らむPNGなどが該当）
     if (pct < 0 && hasWebp && effectiveMime !== 'image/webp') {
       noteParts.push('元画像より大きくなりました。出力形式をWebPにすると軽くなる場合があります');
+    }
+    if (entry.targetBytes && entry.targetBytes > 0) {
+      if (entry.outBlob.size <= entry.targetBytes) {
+        noteParts.push('目標 ' + formatBytes(entry.targetBytes) + ' 以下 ✓');
+      } else {
+        noteParts.push('目標に届きませんでした（最大辺を下げるか形式を変えてください）');
+      }
     }
     ui.note.textContent = noteParts.join(' · ');
 
@@ -611,6 +665,27 @@
       });
     }, 600);
   });
+
+  var targetInput = $('#targetSize');
+  if (targetInput) {
+    var targetTimer = null;
+    targetInput.addEventListener('input', function () {
+      clearTimeout(targetTimer);
+      targetTimer = setTimeout(function () {
+        entries.forEach(function (e) {
+          if (e.file.type && e.file.type.indexOf('image/') === 0) requeue(e);
+        });
+      }, 600);
+    });
+    document.querySelectorAll('.preset-row .chip').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        targetInput.value = btn.getAttribute('data-target');
+        entries.forEach(function (e) {
+          if (e.file.type && e.file.type.indexOf('image/') === 0) requeue(e);
+        });
+      });
+    });
+  }
 
   $('#downloadAll').addEventListener('click', downloadAll);
   $('#clearAll').addEventListener('click', clearAll);

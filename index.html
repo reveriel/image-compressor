@@ -150,6 +150,17 @@
           <label for="maxDim">最大辺（px）</label>
           <input id="maxDim" type="number" min="0" step="100" placeholder="0 = 変更しない" value="0">
         </div>
+        <div class="control">
+          <label for="targetSize">目標サイズ（KB）</label>
+          <input id="targetSize" type="number" min="0" step="10" placeholder="0 = 指定しない" value="0">
+          <div class="preset-row">
+            <button type="button" class="chip" data-target="4096">4MB</button>
+            <button type="button" class="chip" data-target="1024">1MB</button>
+            <button type="button" class="chip" data-target="500">500KB</button>
+            <button type="button" class="chip" data-target="100">100KB</button>
+          </div>
+          <p class="control-note">JPEG / WebP で有効。目標に収まる最大の品質を自動で探します。</p>
+        </div>
         <div class="control control-actions">
           <button id="downloadAll" type="button" class="btn btn-secondary">すべてダウンロード</button>
           <button id="clearAll" type="button" class="btn btn-ghost">すべて削除</button>
